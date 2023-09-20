@@ -20,6 +20,7 @@ function App() {
   //La funcion
   //Las dependencias (si no hay solo se ejecuta una sola vez)
   useEffect(function () {
+    console.log('actualizando los gifs')
     setGifs(DIFFERENT_GIFS)
   }, [])
 
