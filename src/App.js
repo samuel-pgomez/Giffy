@@ -10,12 +10,14 @@ function App() {
   //El useState maneja dos posiciones
   //El valor del estado
   //La actualizacion de dicho stado
-  const [gifs, setGifs] =  useState([]);
+  const [gifs, setGifs] =  useState(GIFS);
 
   return (
     <div className="App">
       <section className="App-content">
-       <img src={gifs} />
+       {//Renderiza cada una de las imagenes para que aparezcan todas
+        gifs.map(singleGif => <img src={singleGif}/>)
+       }
       </section>
     </div>
   );
