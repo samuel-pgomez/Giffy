@@ -2,26 +2,29 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-const GIFS = [
-  'https://media2.giphy.com/media/EPcvhM28ER9XW/giphy.gif?cid=ecf05e47l1ygnlkod7r09m89smcuttgq86c5ab1mswunmpkb&ep=v1_gifs_search&rid=giphy.gif&ct=g',
-  'https://media1.giphy.com/media/pO1H8mAU7geAw/giphy.gif?cid=ecf05e47offop6neuhe7kxxkuqgr25dmtreph71jb8fcckkb&ep=v1_gifs_related&rid=giphy.gif&ct=g'
-]
+const apiUrl = 'https://api.giphy.com/v1/gifs/search?api_key=Wb03bI088BhPf4BKynXAfCFDF6Bb60Zp&q=panda&limit=10&offset=0&rating=g&lang=en&bundle=messaging_non_clips'
 
-const DIFFERENT_GIFS = [
-  'https://media0.giphy.com/media/tFUdJEX8jNbe8/giphy.gif?cid=ecf05e47usrxz1j5odxua1hakj675hrloxunhzm2dvv2l76v&ep=v1_gifs_related&rid=giphy.gif&ct=g'
-]
 function App() {
   //El useState maneja dos posiciones
   //El valor del estado
   //La actualizacion de dicho stado
-  const [gifs, setGifs] =  useState(GIFS);
+  const [gifs, setGifs] =  useState([]);
 
   //useEffect
   //La funcion
   //Las dependencias (si no hay solo se ejecuta una sola vez)
   useEffect(function () {
     console.log('actualizando los gifs')
-    setGifs(DIFFERENT_GIFS)
+    //Consultando la API
+    fetch(apiUrl)
+    .then(res => res.json())//Conversion a json
+    .then(response =>{
+      const {data} = response
+      //Recorriendo cada gifs
+      const gifs = data.map(image => image.images.fixed_width_small.url)
+      setGifs(gifs)
+    } )
+    //
   }, [])
 
   return (
@@ -30,7 +33,7 @@ function App() {
        {//Renderiza cada una de las imagenes para que aparezcan todas
         gifs.map(singleGif => <img src={singleGif}/>)
        }{/**Al hacer click evalua el eevento y cambia de Gif */}
-       <button onClick={() => setGifs(DIFFERENT_GIFS)}>Cambiar Gifs</button>
+       {/*<button onClick={() => setGifs(DIFFERENT_GIFS)}>Cambiar Gifs</button>*/}
       </section>
     </div>
   );
