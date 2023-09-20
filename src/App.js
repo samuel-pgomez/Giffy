@@ -1,5 +1,5 @@
 //Importacion de Hook useState
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 const GIFS = [
@@ -15,6 +15,13 @@ function App() {
   //El valor del estado
   //La actualizacion de dicho stado
   const [gifs, setGifs] =  useState(GIFS);
+
+  //useEffect
+  //La funcion
+  //Las dependencias (si no hay solo se ejecuta una sola vez)
+  useEffect(function () {
+    setGifs(DIFFERENT_GIFS)
+  }, [])
 
   return (
     <div className="App">
