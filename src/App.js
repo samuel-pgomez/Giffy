@@ -1,6 +1,7 @@
 //Importacion de Hook useState
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import getGifs from './services/getGifs';
 
 const apiUrl = 'https://api.giphy.com/v1/gifs/search?api_key=Wb03bI088BhPf4BKynXAfCFDF6Bb60Zp&q=panda&limit=10&offset=0&rating=g&lang=en&bundle=messaging_non_clips'
 
@@ -14,16 +15,9 @@ function App() {
   //La funcion
   //Las dependencias (si no hay solo se ejecuta una sola vez)
   useEffect(function () {
-    console.log('actualizando los gifs')
+    //console.log('actualizando los gifs')
     //Consultando la API
-    fetch(apiUrl)
-    .then(res => res.json())//Conversion a json
-    .then(response =>{
-      const {data} = response
-      //Recorriendo cada gifs
-      const gifs = data.map(image => image.images.fixed_width_small.url)
-      setGifs(gifs)
-    } )
+    getGifs().then(gifs => setGifs(gifs))
     //
   }, [])
 
