@@ -18,7 +18,7 @@ export default function ListOfGifs({ keyword }) {
     //Consultando la API
     getGifs({ keyword }).then((gifs) => setGifs(gifs));
     //
-  }, []);
+  }, [keyword]);
 
   return gifs.map(({ id, title, url }) => (
     <Gif 
