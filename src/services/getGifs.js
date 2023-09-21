@@ -11,8 +11,11 @@ export default function getGifs({ keyword = "morty" } = {}) {
       const { data = [] } = response;
       //Recorriendo cada gifs
       if (Array.isArray(data)) {
-        const gifs = data.map((image) => image.images.fixed_width_small.url);
-        return gifs;
+        const gifs = data.map((image) => { 
+          //Se obtiene estos datos desde API
+          const {images, title, id} = image
+          const { url } = image.images.fixed_width_small.url});
+        return { title, id, url };
       }
     });
 }

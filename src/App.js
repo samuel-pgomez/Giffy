@@ -25,7 +25,7 @@ export default function App() {
     <div className="App">
       <section className="App-content">
        {//Renderiza cada una de las imagenes para que aparezcan todas
-        gifs.map(singleGif => <img src={singleGif}/>)
+        gifs.map(singleGif => <img src={singleGif.url}/>)
        }{/**Al hacer click evalua el eevento y cambia de Gif */}
        {/*<button onClick={() => setGifs(DIFFERENT_GIFS)}>Cambiar Gifs</button>*/}
       </section>
