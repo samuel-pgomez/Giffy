@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import getGifs from './services/getGifs';
 
-const apiUrl = 'https://api.giphy.com/v1/gifs/search?api_key=Wb03bI088BhPf4BKynXAfCFDF6Bb60Zp&q=panda&limit=10&offset=0&rating=g&lang=en&bundle=messaging_non_clips'
+//const apiUrl = 'https://api.giphy.com/v1/gifs/search?api_key=Wb03bI088BhPf4BKynXAfCFDF6Bb60Zp&q=panda&limit=10&offset=0&rating=g&lang=en&bundle=messaging_non_clips'
 
-function App() {
+export default function App() {
   //El useState maneja dos posiciones
   //El valor del estado
   //La actualizacion de dicho stado
@@ -17,7 +17,7 @@ function App() {
   useEffect(function () {
     //console.log('actualizando los gifs')
     //Consultando la API
-    getGifs().then(gifs => setGifs(gifs))
+    getGifs({ keyword: 'rick' }).then(gifs => setGifs(gifs))
     //
   }, [])
 
@@ -33,4 +33,4 @@ function App() {
   );
 }
 
-export default App;
+//export default App;
