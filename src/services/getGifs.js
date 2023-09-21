@@ -1,5 +1,6 @@
-const apiUrl =
-  "https://api.giphy.com/v1/gifs/search?api_key=Wb03bI088BhPf4BKynXAfCFDF6Bb60Zp&q=panda&limit=10&offset=0&rating=g&lang=en&bundle=messaging_non_clips";
+const apiKey = "Wb03bI088BhPf4BKynXAfCFDF6Bb60Zp";
+
+const apiUrl = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=panda&limit=10&offset=0&rating=g&lang=en&bundle=messaging_non_clips`;
 
 export default function getGifs() {
   //Consultando la API
