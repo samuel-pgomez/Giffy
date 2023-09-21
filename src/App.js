@@ -18,7 +18,7 @@ export default function App() {
   useEffect(function () {
     //console.log('actualizando los gifs')
     //Consultando la API
-    getGifs({ keyword: "rick" }).then((gifs) => setGifs(gifs));
+    getGifs({ keyword: "programing" }).then((gifs) => setGifs(gifs));
     //
   }, []);
 
@@ -27,12 +27,18 @@ export default function App() {
       <section className="App-content">
         {
           //Renderiza cada una de las imagenes para que aparezcan todas*/
-          gifs.map((singleGif => <Gif title={singleGif.title} url={singleGif.url} id={singleGif.id}/>)
-         
-          ) /**Al hacer click evalua el eevento y cambia de Gif */
+          gifs.map((singleGif) => (
+            <Gif
+              //Agregacion de una key unica para cada elemento
+              key={singleGif.id}
+              title={singleGif.title}
+              url={singleGif.url}
+              id={singleGif.id}
+            />
+          )) /**Al hacer click evalua el eevento y cambia de Gif */
         }
         {/*<button onClick={() => setGifs(DIFFERENT_GIFS)}>Cambiar Gifs</button>
-        */}
+         */}
       </section>
     </div>
   );
