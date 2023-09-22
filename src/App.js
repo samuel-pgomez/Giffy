@@ -4,7 +4,7 @@ import "./App.css";
 import ListOfGifs from "./components/ListOfGifs";
 
 //Utilizando Wouter
-import { Route } from "wouter";
+import { Link, Route } from "wouter";
 
 //const apiUrl = 'https://api.giphy.com/v1/gifs/search?api_key=Wb03bI088BhPf4BKynXAfCFDF6Bb60Zp&q=panda&limit=10&offset=0&rating=g&lang=en&bundle=messaging_non_clips'
 
@@ -14,9 +14,9 @@ export default function App() {
     <div className="App">
       <section className="App-content">
         <h1>App</h1> 
-        <a href="/gif/panda">Gifs de pandas</a>
-        <a href="/gif/ecuador">Gifs de ecuador</a>
-        <a href="/gif/chile">Gifs de chile</a>
+        <Link to="/gif/panda">Gifs de pandas</Link>
+        <Link to="/gif/ecuador">Gifs de ecuador</Link>
+        <Link to="/gif/chile">Gifs de chile</Link>
         <Route 
         component={ListOfGifs}
         path="/gif/:keyword"/>
